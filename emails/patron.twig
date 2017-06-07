@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to The New York Public Library!</title>
+</head>
+<style media="screen">
+    html {
+        font-family: sans-serif; /* 1 */
+        line-height: 1.15; /* 2 */
+        -ms-text-size-adjust: 100%; /* 3 */
+        -webkit-text-size-adjust: 100%; /* 3 */
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+    .welcome {
+        background-color: #BB1D12;
+        color: #FFF;
+        font-family: Georgia, "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
+        padding: 1rem 0;
+    }
+
+    .welcome h1 {
+        color: #FFF;
+        font-weight: 100;
+        margin-left: 7rem;
+    }
+
+    p {
+        margin-left: 7rem;
+        width: 50%;
+    }
+
+    div.footer {
+        background-color: #54514a;
+        color: #ffffff;
+        font-size: .85rem;
+        min-height: 4.5rem;
+        padding: 2rem 0;
+        position: relative;
+    }
+
+</style>
+
+<body>
+{# @var data \NYPL\Services\Model\DataModel\StreamData\Patron #}
+<div class="welcome">
+    <h1 class="welcome">Welcome to The New York Public Library!</h1>
+</div>
+
+<p>Thank you for your application, {{ data.simplePatron.firstName }}. To pick up your card, please bring
+    <a href="https://www.nypl.org/help/library-card/terms-conditions#Eligibility">valid identification</a> and your temporary barcode number,
+    <code>{{ data.simplePatron.barcode }}</code>, to your <a href="https://www.nypl.org/locations/map">local library</a>.</p>
+
+<p><br />Once you pick up your card, you&rsquo;ll be able to check out materials, download e-books, use the Library&rsquo;s
+    online databases, and access research collections. You can start browsing <a href="https://browse.nypl.org">the catalog</a> now, and
+    log in with your username and PIN to place books and materials on hold.</p>
+
+<p><i>Please note that your temporary account will expire in 90 days.</i></p>
+</body>
+</html>
