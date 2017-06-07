@@ -1,6 +1,8 @@
 # NYPL Mail Listener
 
-This package is intended to be used as a Lambda-based Node.js/PHP Bib Service using the 
+This package is intended to be used as a Lambda-based Node.js/PHP Listener to listen to a Kinesis Stream. 
+
+It uses the 
 [NYPL PHP Microservice Starter](https://github.com/NYPL/php-microservice-starter).
 
 This package adheres to [PSR-1](http://www.php-fig.org/psr/psr-1/), 
