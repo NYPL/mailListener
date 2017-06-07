@@ -11,7 +11,7 @@ This package adheres to [PSR-1](http://www.php-fig.org/psr/psr-1/),
 
 ## Requirements
 
-* Node.js >=6.0
+* Node.js 6.10.2
 * PHP >=7.0 
   * [pdo_pdgsql](http://php.net/manual/en/ref.pdo-pgsql.php)
 
