@@ -29,7 +29,7 @@ class Listener
             error_log(
                 json_encode([
                     'message' => $error['message'],
-                    'level' => 400,
+                    'level' => 500,
                     'level_name' => 'ERROR'
                 ])
             );

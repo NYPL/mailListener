@@ -7,8 +7,6 @@ exports.handler = function(event, context, callback) {
     // console.log(context);
     // console.log('EVENT');
     // console.log(event);
-    // console.log('HEADERS');
-    // console.log(headers);
     // console.log('RECORDS');
     // console.log(JSON.stringify(event.Records));
 
@@ -27,7 +25,7 @@ exports.handler = function(event, context, callback) {
 
         var options = {
             input: JSON.stringify(event),
-            env: Object.assign(process.env, headers)
+            env: Object.assign(process.env)
         };
 
         if (process.env.LAMBDA_TASK_ROOT) {
