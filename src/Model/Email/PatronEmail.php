@@ -28,6 +28,6 @@ class PatronEmail extends Email
          */
         $patron = $this->getStreamData();
 
-        return $patron->getSimplePatron()->getEmail();
+        return trim($patron->getSimplePatron()->getEmail());
     }
 }

@@ -2,25 +2,14 @@
 require __DIR__ . '/vendor/autoload.php';
 
 use NYPL\Starter\Config;
-use NYPL\Services\Listener;
-use NYPL\Starter\APILogger;
+use NYPL\Services\MailListener;
+use NYPL\Starter\Listener\ListenerEvents\KinesisEvents;
 
 Config::initialize(__DIR__);
 
-$listener = new Listener();
+$listener = new MailListener();
 
-try {
-    $numberRecords = $listener->process();
-
-    APILogger::addInfo('Successfully processed ' . $numberRecords . ' record(s).');
-} catch (Throwable $exception) {
-    APILogger::addError(
-        $exception->getMessage(),
-        $exception->getTrace()
-    );
-} catch (Exception $exception) {
-    APILogger::addError(
-        $exception->getMessage(),
-        $exception->getTrace()
-    );
-}
+$listener->process(
+    new KinesisEvents(),
+    'Patron'
+);
