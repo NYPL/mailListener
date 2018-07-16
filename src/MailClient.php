@@ -12,27 +12,32 @@ use NYPL\Starter\Config;
 class MailClient
 {
     /**
+     *
      * @var \Twig_Environment
      */
     protected static $twig;
 
     /**
+     *
      * @var string
      */
     protected $streamName = '';
 
     /**
+     *
      * @var StreamData
      */
     protected $streamData;
 
     /**
+     *
      * @var SesClient
      */
     protected $client;
 
     /**
-     * @param string $streamName
+     *
+     * @param string     $streamName
      * @param StreamData $streamData
      */
     public function __construct($streamName, StreamData $streamData)
@@ -42,6 +47,7 @@ class MailClient
     }
 
     /**
+     *
      * @throws \Exception
      */
     public function sendEmail()
@@ -64,7 +70,8 @@ class MailClient
         APILogger::addInfo('Sending email to: ' . $email->getToAddress());
 
         try {
-            $this->getClient()->sendEmail([
+            $this->getClient()->sendEmail(
+                [
                 'Destination' => [
                     'ToAddresses' => [
                         $email->getToAddress()
@@ -83,13 +90,15 @@ class MailClient
                     ],
                 ],
                 'Source' => $email->getFromAddress()
-            ]);
+                ]
+            );
         } catch (\Exception $exception) {
             throw new APIException('Error sending mail: ' . $exception->getMessage());
         }
     }
 
     /**
+     *
      * @return string
      */
     public function getStreamName()
@@ -98,6 +107,7 @@ class MailClient
     }
 
     /**
+     *
      * @param string $streamName
      */
     public function setStreamName($streamName)
@@ -106,6 +116,7 @@ class MailClient
     }
 
     /**
+     *
      * @return StreamData
      */
     public function getStreamData()
@@ -114,6 +125,7 @@ class MailClient
     }
 
     /**
+     *
      * @param StreamData $streamData
      */
     public function setStreamData($streamData)
@@ -122,6 +134,7 @@ class MailClient
     }
 
     /**
+     *
      * @throws APIException|\InvalidArgumentException
      * @return SesClient
      */
@@ -129,7 +142,8 @@ class MailClient
     {
         if (!$this->client) {
             $this->setClient(
-                new SesClient([
+                new SesClient(
+                    [
                     'version' => 'latest',
                     'region'  => Config::get('AWS_DEFAULT_REGION'),
                     'credentials' => [
@@ -137,7 +151,8 @@ class MailClient
                         'secret' => Config::get('AWS_SECRET_ACCESS_KEY'),
                         'token' => Config::get('AWS_SESSION_TOKEN')
                     ]
-                ])
+                    ]
+                )
             );
         }
 
@@ -145,6 +160,7 @@ class MailClient
     }
 
     /**
+     *
      * @param SesClient $client
      */
     public function setClient($client)

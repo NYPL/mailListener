@@ -11,6 +11,7 @@ class MailListener extends Listener
     protected function processListenerEvents()
     {
         /**
+         *
          * @var KinesisEvents $listenerEvents
          */
         $listenerEvents = $this->getListenerEvents();

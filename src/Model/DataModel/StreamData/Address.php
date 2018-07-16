@@ -16,6 +16,7 @@ class Address extends StreamData
     public $zip = '';
 
     /**
+     *
      * @return string
      */
     public function getLine1()
@@ -24,6 +25,7 @@ class Address extends StreamData
     }
 
     /**
+     *
      * @param string $line1
      */
     public function setLine1($line1)
@@ -32,6 +34,7 @@ class Address extends StreamData
     }
 
     /**
+     *
      * @return string
      */
     public function getLine2()
@@ -40,6 +43,7 @@ class Address extends StreamData
     }
 
     /**
+     *
      * @param string $line2
      */
     public function setLine2($line2)
@@ -48,6 +52,7 @@ class Address extends StreamData
     }
 
     /**
+     *
      * @return string
      */
     public function getCity()
@@ -56,6 +61,7 @@ class Address extends StreamData
     }
 
     /**
+     *
      * @param string $city
      */
     public function setCity($city)
@@ -64,6 +70,7 @@ class Address extends StreamData
     }
 
     /**
+     *
      * @return string
      */
     public function getState()
@@ -72,6 +79,7 @@ class Address extends StreamData
     }
 
     /**
+     *
      * @param string $state
      */
     public function setState($state)
@@ -80,6 +88,7 @@ class Address extends StreamData
     }
 
     /**
+     *
      * @return string
      */
     public function getZip()
@@ -88,6 +97,7 @@ class Address extends StreamData
     }
 
     /**
+     *
      * @param string $zip
      */
     public function setZip($zip)

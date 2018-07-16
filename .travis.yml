@@ -12,9 +12,9 @@ install:
 - npm install
 script:
 - composer install
-- vendor/bin/phpunit --coverage-clover build/logs/clover.xml
+- vendor/bin/phpunit --coverage-clover build/logs/clover.xml tests/
 after_success:
-- vendor/bin/coveralls -v
+- vendor/bin/php-coveralls -v
 - vendor/bin/phpcs -n --standard=PSR1,PSR2 src/
 - vendor/bin/phpcbf src/
 deploy:

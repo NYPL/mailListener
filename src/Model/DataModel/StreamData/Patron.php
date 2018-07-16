@@ -6,11 +6,13 @@ use NYPL\Services\Model\DataModel\StreamData;
 class Patron extends StreamData
 {
     /**
+     *
      * @var SimplePatron
      */
     public $simplePatron;
 
     /**
+     *
      * @return SimplePatron
      */
     public function getSimplePatron()
@@ -19,6 +21,7 @@ class Patron extends StreamData
     }
 
     /**
+     *
      * @param SimplePatron $simplePatron
      */
     public function setSimplePatron($simplePatron)
@@ -27,6 +30,7 @@ class Patron extends StreamData
     }
 
     /**
+     *
      * @param array|string $data
      *
      * @return SimplePatron

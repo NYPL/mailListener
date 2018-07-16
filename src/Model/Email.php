@@ -14,16 +14,19 @@ abstract class Email
     abstract public function getTemplate();
 
     /**
+     *
      * @var \Twig_Environment
      */
     public static $twig;
 
     /**
+     *
      * @var StreamData
      */
     public $streamData;
 
     /**
+     *
      * @param StreamData $streamData
      */
     public function __construct(StreamData $streamData)
@@ -32,6 +35,7 @@ abstract class Email
     }
 
     /**
+     *
      * @return \Twig_Environment
      */
     public static function getTwig()
@@ -48,6 +52,7 @@ abstract class Email
     }
 
     /**
+     *
      * @return string
      */
     public function getBody()
@@ -56,6 +61,7 @@ abstract class Email
     }
 
     /**
+     *
      * @param \Twig_Environment $twig
      */
     public static function setTwig($twig)
@@ -64,6 +70,7 @@ abstract class Email
     }
 
     /**
+     *
      * @return StreamData
      */
     public function getStreamData()
@@ -72,6 +79,7 @@ abstract class Email
     }
 
     /**
+     *
      * @param StreamData $streamData
      */
     public function setStreamData($streamData)

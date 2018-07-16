@@ -24,6 +24,7 @@ class PatronEmail extends Email
     public function getToAddress()
     {
         /**
+         *
          * @var Patron $patron
          */
         $patron = $this->getStreamData();

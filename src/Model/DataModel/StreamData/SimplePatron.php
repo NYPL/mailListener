@@ -28,11 +28,13 @@ class SimplePatron extends StreamData
     public $policyType = '';
 
     /**
+     *
      * @var Address
      */
     public $address;
 
     /**
+     *
      * @return string
      */
     public function getName()
@@ -41,6 +43,7 @@ class SimplePatron extends StreamData
     }
 
     /**
+     *
      * @param string $name
      */
     public function setName($name)
@@ -51,6 +54,7 @@ class SimplePatron extends StreamData
     }
 
     /**
+     *
      * @param string $name
      *
      * @return bool|string
@@ -65,6 +69,7 @@ class SimplePatron extends StreamData
     }
 
     /**
+     *
      * @return string
      */
     public function getBirthdate()
@@ -73,6 +78,7 @@ class SimplePatron extends StreamData
     }
 
     /**
+     *
      * @param string $birthdate
      */
     public function setBirthdate($birthdate)
@@ -81,6 +87,7 @@ class SimplePatron extends StreamData
     }
 
     /**
+     *
      * @return string
      */
     public function getEmail()
@@ -89,6 +96,7 @@ class SimplePatron extends StreamData
     }
 
     /**
+     *
      * @param string $email
      */
     public function setEmail($email)
@@ -97,6 +105,7 @@ class SimplePatron extends StreamData
     }
 
     /**
+     *
      * @return string
      */
     public function getWorkOrSchoolAddress()
@@ -105,6 +114,7 @@ class SimplePatron extends StreamData
     }
 
     /**
+     *
      * @param string $workOrSchoolAddress
      */
     public function setWorkOrSchoolAddress($workOrSchoolAddress)
@@ -113,6 +123,7 @@ class SimplePatron extends StreamData
     }
 
     /**
+     *
      * @return string
      */
     public function getEcommunicationsPref()
@@ -121,6 +132,7 @@ class SimplePatron extends StreamData
     }
 
     /**
+     *
      * @param string $ecommunicationsPref
      */
     public function setEcommunicationsPref($ecommunicationsPref)
@@ -129,6 +141,7 @@ class SimplePatron extends StreamData
     }
 
     /**
+     *
      * @return string
      */
     public function getUsername()
@@ -137,6 +150,7 @@ class SimplePatron extends StreamData
     }
 
     /**
+     *
      * @param string $username
      */
     public function setUsername($username)
@@ -145,6 +159,7 @@ class SimplePatron extends StreamData
     }
 
     /**
+     *
      * @return string
      */
     public function getPin()
@@ -153,6 +168,7 @@ class SimplePatron extends StreamData
     }
 
     /**
+     *
      * @param string $pin
      */
     public function setPin($pin)
@@ -161,6 +177,7 @@ class SimplePatron extends StreamData
     }
 
     /**
+     *
      * @return string
      */
     public function getPolicyType()
@@ -169,6 +186,7 @@ class SimplePatron extends StreamData
     }
 
     /**
+     *
      * @param string $policyType
      */
     public function setPolicyType($policyType)
@@ -177,6 +195,7 @@ class SimplePatron extends StreamData
     }
 
     /**
+     *
      * @return Address
      */
     public function getAddress()
@@ -185,6 +204,7 @@ class SimplePatron extends StreamData
     }
 
     /**
+     *
      * @param Address $address
      */
     public function setAddress($address)
@@ -193,6 +213,7 @@ class SimplePatron extends StreamData
     }
 
     /**
+     *
      * @param array|string $data
      *
      * @return Address
@@ -203,6 +224,7 @@ class SimplePatron extends StreamData
     }
 
     /**
+     *
      * @return string
      */
     public function getPatronId()
@@ -211,6 +233,7 @@ class SimplePatron extends StreamData
     }
 
     /**
+     *
      * @param string $patronId
      */
     public function setPatronId($patronId)
@@ -219,6 +242,7 @@ class SimplePatron extends StreamData
     }
 
     /**
+     *
      * @return string
      */
     public function getBarcode()
@@ -227,6 +251,7 @@ class SimplePatron extends StreamData
     }
 
     /**
+     *
      * @param string $barcode
      */
     public function setBarcode($barcode)
@@ -235,6 +260,7 @@ class SimplePatron extends StreamData
     }
 
     /**
+     *
      * @return string
      */
     public function getFirstName()
@@ -243,6 +269,7 @@ class SimplePatron extends StreamData
     }
 
     /**
+     *
      * @param string $firstName
      */
     public function setFirstName($firstName)
