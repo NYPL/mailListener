@@ -47,9 +47,21 @@ class SimplePatron extends StreamData
     {
         $this->name = $name;
 
-        $this->setFirstName(
-            substr($name, strpos($name, ',') + 1)
-        );
+        $this->setFirstName($this->deriveFirstName($name));
+    }
+
+    /**
+     * @param string $name
+     *
+     * @return bool|string
+     */
+    protected function deriveFirstName($name = '')
+    {
+        if (strpos($name, ',') !== false) {
+            return substr($name, strpos($name, ',') + 1);
+        }
+
+        return $name;
     }
 
     /**
