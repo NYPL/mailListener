@@ -1,6 +1,6 @@
 {
   "name": "mailListener",
-  "description": "NYPL General Stream Mailer",
+  "description": "NYPL Mail Listener",
   "require": {
     "nypl/microservice-starter": "^1.0.0",
     "twig/twig": "2.3.2"

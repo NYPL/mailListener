@@ -13,12 +13,9 @@ This package adheres to [PSR-1](http://www.php-fig.org/psr/psr-1/),
 
 * Node.js 6.10.2
 * PHP >=7.0 
-  * [pdo_pdgsql](http://php.net/manual/en/ref.pdo-pgsql.php)
 
 Homebrew is highly recommended for PHP:
-  * `brew install php71`
-  * `brew install php71-pdo-pgsql`
-  
+  * `brew install php71`  
 
 ## Installation
 
@@ -26,10 +23,9 @@ Homebrew is highly recommended for PHP:
 2. Install required dependencies.
    * Run `npm install` to install Node.js packages.
    * Run `composer install` to install PHP packages.
-   * If you have not already installed `node-lambda` as a global package, run `npm install -g node-lambda`.
-3. Setup [configuration](#configuration) files.
-   * Copy the `.env.sample` file to `.env`.
-   * Copy `config/var_qa.env.sample` to `config/var_qa.env` and `config/var_production.env.sample` to `config/var_production.env`.
+3. Setup local [configuration](#configuration) file.
+   * Copy `config/local.env.sample` to `config/local.env` and update any necessary values using `config/development.env` as an example.
+     * _Note: Values should be unencrypted._
 
 ## Configuration
 
@@ -37,37 +33,35 @@ Various files are used to configure and deploy the Lambda.
 
 ### .env
 
-`.env` is used *locally* for two purposes:
+`.env` is used by `node-lambda` for deploying to and configuring Lambda in *all* environments. 
 
-1. By `node-lambda` for deploying to and configuring Lambda in *all* environments. 
-   * You should use this file to configure the common settings for the Lambda 
-   (e.g. timeout, role, etc.) and include AWS credentials to deploy the Lambda. 
-2. To set local environment variables so the Lambda can be run and tested in a local environment.
-   These parameters are ultimately set by the [var environment files](#var_environment) when the Lambda is deployed.
+You should use this file to configure the common settings for the Lambda (e.g. timeout, Node version). 
 
 ### package.json
 
-Configures `npm run` deployment commands for each environment and sets the proper AWS Lambda VPC and
-security group.
+Configures `npm run` commands for each environment for deployment and testing. Deployment commands may also set the proper AWS Lambda VPC, security group, and role.
  
 ~~~~
 "scripts": {
-  "deploy-qa": "node-lambda deploy -e qa -f config/deploy_qa.env -S config/event_sources_qa.json -b subnet-f4fe56af -g sg-1d544067",
-  "deploy-production": "node-lambda deploy -e production -f config/deploy_production.env -S config/event_sources_production.json -b subnet-f4fe56af -g sg-1d544067"
+    "deploy-development": ...
+    "deploy-qa": ...
+    "deploy-production": ...
 },
 ~~~~
 
-### var_app
+### config/global.env
 
-Configures environment variables common to *all* environments.
+Configures (non-secret) environment variables common to *all* environments.
 
-### var_*environment*
+### config/*environment*.env
 
 Configures environment variables specific to each environment.
 
-### event_sources_*environment*
+### config/event_sources_*environment*.json
 
 Configures Lambda event sources (triggers) specific to each environment.
+
+Secrets *MUST* be encrypted using KMS.
 
 ## Usage
 
@@ -81,14 +75,11 @@ npm run test-send-email
 
 ## Deployment
 
-To deploy to the QA or Production environment, run the corresponding command:
+Travis CI is configured to run our build and deployment process on AWS.
 
-~~~~
-npm run deploy-qa
-~~~~
+Our Travis CI/CD pipeline will execute the following steps for each deployment trigger:
 
-or
-
-~~~~
-npm run deploy-production
-~~~~
+* Run unit test coverage
+* Build Lambda deployment packages
+* Execute the `deploy` hook only for `development`, `qa` and `master` branches to adhere to our `node-lambda` deployment process
+* Developers _do not_ need to manually deploy the application unless an error occurred via Travis
