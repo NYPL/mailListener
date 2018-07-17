@@ -39,8 +39,8 @@ class MailClient
     }
 
     /**
-     *
-     * @throws \Exception
+     * @return bool
+     * @throws APIException
      */
     public function sendEmail()
     {
@@ -51,7 +51,7 @@ class MailClient
         }
 
         if (!isset($email)) {
-            throw new \Exception('Email object was not specified');
+            throw new APIException('Email object for stream data (' . get_class($streamData) . ') was not specified');
         }
 
         if (!$email->getToAddress()) {
@@ -109,7 +109,7 @@ class MailClient
 
     /**
      *
-     * @throws APIException|\InvalidArgumentException
+     * @throws APIException|\InvalidArgumentException|APIException
      * @return SesClient
      */
     public function getClient()
@@ -118,13 +118,13 @@ class MailClient
             $this->setClient(
                 new SesClient(
                     [
-                    'version' => 'latest',
-                    'region'  => Config::get('AWS_DEFAULT_REGION'),
-                    'credentials' => [
-                        'key' => Config::get('AWS_ACCESS_KEY_ID'),
-                        'secret' => Config::get('AWS_SECRET_ACCESS_KEY'),
-                        'token' => Config::get('AWS_SESSION_TOKEN')
-                    ]
+                        'version' => 'latest',
+                        'region'  => Config::get('AWS_REGION'),
+                        'credentials' => [
+                            'key' => Config::get('AWS_ACCESS_KEY_ID'),
+                            'secret' => Config::get('AWS_SECRET_ACCESS_KEY'),
+                            'token' => Config::get('AWS_SESSION_TOKEN')
+                        ]
                     ]
                 )
             );
