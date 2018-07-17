@@ -18,7 +18,7 @@ class MailListener extends Listener
     {
         $streamName = KinesisEvents::getStreamNameFromPayLoad($this->getPayload());
 
-        if (strpos($streamName, 'Patron') !== false) {
+        if (strpos($streamName, 'Patron') === 0) {
             return new PatronEvents();
         }
 
