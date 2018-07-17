@@ -1,27 +1,45 @@
 <?php
 namespace NYPL\Services;
 
-use NYPL\Services\Model\DataModel\StreamData\Patron;
+use NYPL\Services\KinesisEvents\MailKinesisEvents;
+use NYPL\Services\KinesisEvents\MailKinesisEvents\PatronEvents;
+use NYPL\Starter\APIException;
 use NYPL\Starter\Listener\Listener;
 use NYPL\Starter\Listener\ListenerEvents\KinesisEvents;
 use NYPL\Starter\Listener\ListenerResult;
 
 class MailListener extends Listener
 {
+    /**
+     * @return MailKinesisEvents
+     * @throws APIException
+     */
+    public function getKinesisEvents()
+    {
+        $streamName = KinesisEvents::getStreamNameFromPayLoad($this->getPayload());
+
+        if (strpos($streamName, 'Patron') !== false) {
+            return new PatronEvents();
+        }
+
+        throw new APIException('Stream name specified (' . $streamName . ') did not match known stream');
+    }
+
+    /**
+     * @return ListenerResult
+     * @throws \Exception
+     */
     protected function processListenerEvents()
     {
         /**
          *
-         * @var KinesisEvents $listenerEvents
+         * @var MailKinesisEvents $listenerEvents
          */
         $listenerEvents = $this->getListenerEvents();
 
         foreach ($listenerEvents->getEvents() as $listenerEvent) {
-            $patron = new Patron($listenerEvent->getListenerData()->getData());
-
             $mailClient = new MailClient(
-                $listenerEvents->getStreamName(),
-                $patron
+                $listenerEvents->getStreamData($listenerEvent->getListenerData()->getData())
             );
 
             $mailClient->sendEmail();

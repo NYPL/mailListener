@@ -3,13 +3,14 @@ require __DIR__ . '/vendor/autoload.php';
 
 use NYPL\Starter\Config;
 use NYPL\Services\MailListener;
-use NYPL\Starter\Listener\ListenerEvents\KinesisEvents;
+use NYPL\Starter\APILogger;
 
-Config::initialize(__DIR__ . '/config');
+try {
+    Config::initialize(__DIR__ . '/config');
 
-$listener = new MailListener();
+    $mailListener = new MailListener();
 
-$listener->process(
-    new KinesisEvents(),
-    'Patron'
-);
+    $mailListener->process($mailListener->getKinesisEvents());
+} catch (Exception $exception) {
+    APILogger::addError('Unable to process stream: ' . $exception->getMessage());
+}

@@ -19,12 +19,6 @@ class MailClient
 
     /**
      *
-     * @var string
-     */
-    protected $streamName = '';
-
-    /**
-     *
      * @var StreamData
      */
     protected $streamData;
@@ -37,12 +31,10 @@ class MailClient
 
     /**
      *
-     * @param string     $streamName
      * @param StreamData $streamData
      */
-    public function __construct($streamName, StreamData $streamData)
+    public function __construct(StreamData $streamData)
     {
-        $this->setStreamName($streamName);
         $this->setStreamData($streamData);
     }
 
@@ -95,24 +87,6 @@ class MailClient
         } catch (\Exception $exception) {
             throw new APIException('Error sending mail: ' . $exception->getMessage());
         }
-    }
-
-    /**
-     *
-     * @return string
-     */
-    public function getStreamName()
-    {
-        return $this->streamName;
-    }
-
-    /**
-     *
-     * @param string $streamName
-     */
-    public function setStreamName($streamName)
-    {
-        $this->streamName = $streamName;
     }
 
     /**

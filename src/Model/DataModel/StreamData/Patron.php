@@ -6,13 +6,11 @@ use NYPL\Services\Model\DataModel\StreamData;
 class Patron extends StreamData
 {
     /**
-     *
      * @var SimplePatron
      */
     public $simplePatron;
 
     /**
-     *
      * @return SimplePatron
      */
     public function getSimplePatron()
