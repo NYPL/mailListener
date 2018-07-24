@@ -1,13 +1,14 @@
 <?php
 namespace NYPL\Services;
 
-use NYPL\Services\Model\DataModel\StreamData\Patron;
+use NYPL\Services\Model\DataModel\StreamData\Patron\Patron;
+use NYPL\Services\Model\DataModel\StreamData\NewPatron\NewPatron;
 use NYPL\Starter\Listener\Listener;
 use NYPL\Starter\Listener\ListenerEvents\KinesisEvents;
 use NYPL\Starter\Listener\ListenerResult;
 
 class MailListener extends Listener
-{
+{ //ljc
     protected function processListenerEvents()
     {
         /**

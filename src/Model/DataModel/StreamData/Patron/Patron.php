@@ -1,7 +1,7 @@
 <?php
-namespace NYPL\Services\Model\DataModel\StreamData;
+namespace NYPL\Services\Model\DataModel\StreamData\Patron; //ljc
 
-use NYPL\Services\Model\DataModel\StreamData;
+use NYPL\Services\Model\DataModel\StreamData\Patron; //ljc
 
 class Patron extends StreamData
 {

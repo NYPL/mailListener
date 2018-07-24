@@ -10,7 +10,8 @@
     "deploy-development-local": "./node_modules/.bin/node-lambda deploy -e development -f ./config/development.env -o arn:aws:iam::224280085904:role/lambda_basic_execution -S ./config/event_sources_development.json -P nypl-sandbox",
     "deploy-qa-local": "./node_modules/.bin/node-lambda deploy -e qa -f config/qa.env -o 'arn:aws:iam::946183545209:role/lambda-full-access' -S ./config/event_sources_qa.json -P nypl-digital-dev",
     "deploy-production-local": "./node_modules/.bin/node-lambda deploy -e production -f config/production.env -o 'arn:aws:iam::946183545209:role/lambda-full-access' -S ./config/event_sources_production.json -P nypl-digital-dev",
-    "test-send-email": "./node_modules/.bin/node-lambda run -j tests/events/kinesis_send_email.json -x tests/events/context.json"
+    "test-send-patron-email": "./node_modules/.bin/node-lambda run -j tests/events/Patron/kinesis_send_email.json -x tests/events/context.json",
+    "test-send-new-patron-email": "./node_modules/.bin/node-lambda run -j tests/events/NewPatron/kinesis_send_email.json -x tests/events/context.json"
   },
   "repository": {
   },
