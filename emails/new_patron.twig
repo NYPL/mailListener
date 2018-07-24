@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to The New York Public Library!</title>
+</head>
+<style media="screen">
+    html {
+        font-family: sans-serif; /* 1 */
+        line-height: 1.15; /* 2 */
+        -ms-text-size-adjust: 100%; /* 3 */
+        -webkit-text-size-adjust: 100%; /* 3 */
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+    .welcome {
+        background-color: #BB1D12;
+        color: #FFF;
+        font-family: Georgia, "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
+        padding: 1rem 0;
+    }
+
+    .welcome h1 {
+        color: #FFF;
+        font-weight: 100;
+        margin-left: 7rem;
+    }
+
+    p {
+        margin-left: 7rem;
+        width: 50%;
+    }
+
+    div.footer {
+        background-color: #54514a;
+        color: #ffffff;
+        font-size: .85rem;
+        min-height: 4.5rem;
+        padding: 2rem 0;
+        position: relative;
+    }
+
+</style>
+
+<body>
+{# @var data \NYPL\Services\Model\DataModel\StreamData\Patron #}
+<div class="welcome">
+    <h1 class="welcome">Welcome to The New York Public Library!</h1>
+</div>
+
+<p>{{ data.firstName }} {{ data.lastName }},</p>
+
+<p>This is an automated email to confirm that you’ve signed up for MyLibraryNYC. Please keep this email, which contains your account information, for your records.</p>
+
+<p>Your barcode is: <b><code>{{ data.barcode }}</code></b></p>
+
+<p>You selected your four-digit PIN when you signed up for your account. </p>
+
+<p>As an educator at a participating MyLibraryNYC school, there are millions of free resources for you to discover.</p>
+<ul>
+  <li><a href="https://sets.mylibrarynyc.org/users/start">Explore and order teacher sets</a> for delivery to your school using your DOE email address.</li>
+  <li>Whether you’re in the
+    <a href="https://browse.nypl.org/iii/encore/homepage?lang=eng">Bronx</a>,
+    <a href="https://borrow.bklynlibrary.org/r1s/iii/encore/?lang=eng">Brooklyn</a>,
+    <a href="https://browse.nypl.org/iii/encore/homepage?lang=eng">Manhattan</a>,
+    <a href="https://browse.nypl.org/iii/encore/homepage?lang=eng">Staten Island</a>, or
+    <a href="http://www.queenslibrary.org/books">Queens</a>,
+    request individual items for pickup at a public library near you using your barcode and PIN.</li>
+  <li>You can also <a href="https://www.mylibrarynyc.org/help/access-digital-resources">log into databases and read ebooks</a> from anywhere using your barcode and PIN.</li>
+</ul>
+
+<p>Please email help@mylibrarynyc.org if you have questions.</p>
+
+<p>
+  Thank you,<br>
+  The MyLibraryNYC Team
+</p>
+
+</body>
+</html>

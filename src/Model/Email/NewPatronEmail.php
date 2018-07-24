@@ -1,10 +1,10 @@
 <?php
 namespace NYPL\Services\Model\Email;
 
-use NYPL\Services\Model\DataModel\StreamData\Patron\Patron;
+use NYPL\Services\Model\DataModel\StreamData\NewPatron\NewPatron;
 use NYPL\Services\Model\Email;
 
-class PatronEmail extends Email
+class NewPatronEmail extends Email
 {
     public function getSubject()
     {
@@ -18,17 +18,17 @@ class PatronEmail extends Email
 
     public function getTemplate()
     {
-        return 'patron.twig';
+        return 'new_patron.twig';
     }
 
     public function getToAddress()
     {
         /**
          *
-         * @var Patron $patron
+         * @var NewPatron $patron
          */
-        $patron = $this->getStreamData();
+        $newPatron = $this->getStreamData();
 
-        return trim($patron->getSimplePatron()->getEmail());
+        return trim($newPatron->getEmail());
     }
 }

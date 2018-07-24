@@ -9,7 +9,13 @@ Config::initialize(__DIR__ . '/config');
 
 $listener = new MailListener();
 
+if (true) {
+  const streamName = 'Patron';
+} else {
+  const streamName = 'New Patron';
+}
+
 $listener->process(
     new KinesisEvents(),
-    'Patron'
+    const streamName
 );

@@ -58,6 +58,10 @@ class MailClient
             $email = new PatronEmail($streamData);
         }
 
+        if ($streamData instanceof NewPatron) {
+            $email = new NewPatronEmail($streamData);
+        }
+
         if (!isset($email)) {
             throw new \Exception('Email object was not specified');
         }

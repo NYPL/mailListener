@@ -1,6 +1,8 @@
 <?php
 namespace NYPL\Services\Model;
 
+StreamNameUtility //ljc
+
 use NYPL\Services\Model\DataModel\StreamData;
 
 abstract class Email
@@ -57,7 +59,7 @@ abstract class Email
      */
     public function getBody()
     {
-        return self::getTwig()->render('patron.twig', ['data' => $this->getStreamData()]);
+        return self::getTwig()->render(`${StreamNameUtility.camelCaseStreamName}.twig`, ['data' => $this->getStreamData()]); //ljc
     }
 
     /**
