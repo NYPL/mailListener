@@ -3,6 +3,7 @@ namespace NYPL\Services;
 
 use NYPL\Services\KinesisEvents\MailKinesisEvents;
 use NYPL\Services\KinesisEvents\MailKinesisEvents\PatronEvents;
+use NYPL\Services\KinesisEvents\MailKinesisEvents\NewPatronEvents;
 use NYPL\Starter\APIException;
 use NYPL\Starter\Listener\Listener;
 use NYPL\Starter\Listener\ListenerEvents\KinesisEvents;
@@ -20,6 +21,10 @@ class MailListener extends Listener
 
         if (strpos($streamName, 'Patron') === 0) {
             return new PatronEvents();
+        }
+
+        if (strpos($streamName, 'NewPatron') === 0) {
+            return new NewPatronEvents();
         }
 
         throw new APIException('Stream name specified (' . $streamName . ') did not match known stream');

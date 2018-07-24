@@ -2,18 +2,18 @@
 namespace NYPL\Services\KinesisEvents\MailKinesisEvents;
 
 use NYPL\Services\KinesisEvents\MailKinesisEvents;
-use NYPL\Services\Model\DataModel\StreamData\Patron\Patron;
+use NYPL\Services\Model\DataModel\StreamData\NewPatron\NewPatron;
 
-class PatronEvents extends MailKinesisEvents
+class NewPatronEvents extends MailKinesisEvents
 {
     /**
      * @param array $data
      *
-     * @return Patron
+     * @return NewPatron
      */
     public function getStreamData(array $data = [])
     {
-        return new Patron($data);
+        return new NewPatron($data);
     }
 
     /**
@@ -21,6 +21,6 @@ class PatronEvents extends MailKinesisEvents
      */
     public function getSchemaName()
     {
-        return 'Patron';
+        return 'NewPatron';
     }
 }

@@ -1,7 +1,7 @@
 <?php
 namespace NYPL\Services\Model\Email;
 
-use NYPL\Services\Model\DataModel\StreamData\Patron;
+use NYPL\Services\Model\DataModel\StreamData\Patron\Patron;
 use NYPL\Services\Model\Email;
 
 class PatronEmail extends Email
@@ -31,4 +31,10 @@ class PatronEmail extends Email
 
         return trim($patron->getSimplePatron()->getEmail());
     }
+
+    public function getBccAddress()
+    {
+        return null;
+    }
+
 }
