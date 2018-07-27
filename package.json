@@ -6,11 +6,13 @@
   "scripts": {
     "deploy-development": "./node_modules/.bin/node-lambda deploy -e development -f ./config/development.env -o arn:aws:iam::224280085904:role/lambda_basic_execution -S ./config/event_sources_development.json -a $AWS_ACCESS_KEY_ID_DEVELOPMENT -s $AWS_SECRET_ACCESS_KEY_DEVELOPMENT",
     "deploy-qa": "./node_modules/.bin/node-lambda deploy -e qa -f ./config/qa.env -o arn:aws:iam::946183545209:role/lambda-full-access -S ./config/event_sources_qa.json -a $AWS_ACCESS_KEY_ID_QA -s $AWS_SECRET_ACCESS_KEY_QA",
-    "deploy-production": "./node_modules/.bin/node-lambda deploy -e production -f ./config/production.env -o arn:aws:iam::946183545209:role/lambda-full-access -S ./config/event_sources_production.json -a $AWS_ACCESS_KEY_ID_PRODUCTION -s $AWS_SECRET_ACCESS_KEY_PRODUCTION",
+    "deploy-production": "./node_modules/.bin/node-lambda deploy -e production -f ./config/production.env -o arn:aws:iam::946183545209:role/lambda-full-access    -S ./config/event_sources_production.json -a $AWS_ACCESS_KEY_ID_PRODUCTION -s $AWS_SECRET_ACCESS_KEY_PRODUCTION",
     "deploy-development-local": "./node_modules/.bin/node-lambda deploy -e development -f ./config/development.env -o arn:aws:iam::224280085904:role/lambda_basic_execution -S ./config/event_sources_development.json -P nypl-sandbox",
     "deploy-qa-local": "./node_modules/.bin/node-lambda deploy -e qa -f config/qa.env -o 'arn:aws:iam::946183545209:role/lambda-full-access' -S ./config/event_sources_qa.json -P nypl-digital-dev",
     "deploy-production-local": "./node_modules/.bin/node-lambda deploy -e production -f config/production.env -o 'arn:aws:iam::946183545209:role/lambda-full-access' -S ./config/event_sources_production.json -P nypl-digital-dev",
-    "test-send-email": "./node_modules/.bin/node-lambda run -j tests/events/kinesis_send_email.json -x tests/events/context.json"
+    "test-send-email-patron": "./node_modules/.bin/node-lambda run -j tests/events/kinesis_send_email_patron.json -x tests/events/context.json",
+    "test-send-email-new-patron": "./node_modules/.bin/node-lambda run -j tests/events/kinesis_send_email_new_patron.json -x tests/events/context.json",
+    "test-send-email-new-patron-mylibrarynyc": "./node_modules/.bin/node-lambda run -j tests/events/kinesis_send_email_new_patron_mylibrarynyc.json -x tests/events/context.json"
   },
   "repository": {
   },

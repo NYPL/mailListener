@@ -1,7 +1,8 @@
 <?php
-namespace NYPL\Services\Model\DataModel\StreamData;
+namespace NYPL\Services\Model\DataModel\StreamData\Patron;
 
 use NYPL\Services\Model\DataModel\StreamData;
+use NYPL\Services\Model\DataModel\StreamData\Patron\SimplePatron;
 
 class Patron extends StreamData
 {

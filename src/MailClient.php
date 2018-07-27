@@ -3,34 +3,34 @@ namespace NYPL\Services;
 
 use Aws\Ses\SesClient;
 use NYPL\Services\Model\DataModel\StreamData;
-use NYPL\Services\Model\DataModel\StreamData\Patron;
+use NYPL\Services\Model\DataModel\StreamData\Patron\Patron;
+use NYPL\Services\Model\DataModel\StreamData\NewPatron\NewPatron;
+use NYPL\Services\Model\Email\MyLibraryNycEmail;
 use NYPL\Services\Model\Email\PatronEmail;
 use NYPL\Starter\APIException;
 use NYPL\Starter\APILogger;
 use NYPL\Starter\Config;
 
+const EDUCATOR_PATRON_TYPES = array(149, 151);
+
 class MailClient
 {
     /**
-     *
      * @var \Twig_Environment
      */
     protected static $twig;
 
     /**
-     *
      * @var StreamData
      */
     protected $streamData;
 
     /**
-     *
      * @var SesClient
      */
     protected $client;
 
     /**
-     *
      * @param StreamData $streamData
      */
     public function __construct(StreamData $streamData)
@@ -47,11 +47,21 @@ class MailClient
         $streamData = $this->getStreamData();
 
         if ($streamData instanceof Patron) {
+            APILogger::addDebug('Sending email using Patron object');
+
             $email = new PatronEmail($streamData);
         }
 
+        if ($streamData instanceof NewPatron && in_array($streamData->patronType, EDUCATOR_PATRON_TYPES)) {
+            APILogger::addDebug('Sending email using NewPatron object');
+
+            $email = new MyLibraryNycEmail($streamData);
+        }
+
         if (!isset($email)) {
-            throw new APIException('Email object for stream data (' . get_class($streamData) . ') was not specified');
+            APILogger::addDebug('No email will be sent for ' . get_class($streamData) . ' class');
+
+            return false;
         }
 
         if (!$email->getToAddress()) {
@@ -61,6 +71,8 @@ class MailClient
 
         APILogger::addInfo('Sending email to: ' . $email->getToAddress());
 
+        $bccAddresses = $email->getBccAddress() ? [$email->getBccAddress()] : [];
+
         try {
             $this->getClient()->sendEmail(
                 [
@@ -68,6 +80,7 @@ class MailClient
                     'ToAddresses' => [
                         $email->getToAddress()
                     ],
+                    'BccAddresses' => $bccAddresses,
                 ],
                 'Message' => [
                     'Body' => [
@@ -87,6 +100,8 @@ class MailClient
         } catch (\Exception $exception) {
             throw new APIException('Error sending mail: ' . $exception->getMessage());
         }
+
+        return true;
     }
 
     /**
