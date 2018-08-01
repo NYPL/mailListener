@@ -16,12 +16,5 @@
       "awsRegion": "us-east-1",
       "eventSourceARN": "arn:aws:kinesis:us-east-1:946183545209:stream/Patron-qa"
     }
-  ],
-  "eventSource": "aws:kinesis",
-  "eventVersion": "1.0",
-  "eventID": "shardId-000000000000:49572948393596369563806808629790452119861765831598800898",
-  "eventName": "aws:kinesis:record",
-  "invokeIdentityArn": "arn:aws:iam::946183545209:role/lambda-full-access",
-  "awsRegion": "us-east-1",
-  "eventSourceARN": "arn:aws:kinesis:us-east-1:946183545209:stream/Patron-qa"
+  ]
 }
