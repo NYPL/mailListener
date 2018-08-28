@@ -5,6 +5,12 @@
       "StartingPosition": "LATEST",
       "BatchSize": 10,
       "Enabled": true
+    },
+    {
+      "EventSourceArn": "arn:aws:kinesis:us-east-1:224280085904:stream/NewPatron",
+      "StartingPosition": "LATEST",
+      "BatchSize": 10,
+      "Enabled": true
     }
   ]
 }
