@@ -1,5 +1,5 @@
   {
-  "name": "mailListener",
+  "name": "nypl/mailListener",
   "version": "0.1.0",
   "description": "NYPL Mail Listener",
   "main": "listener.js",

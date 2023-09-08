@@ -52,9 +52,9 @@ class MailClient
             $email = new PatronEmail($streamData);
         }
 
+        // below code needs to remove after testing in production
         if ($streamData instanceof NewPatron && in_array($streamData->patronType, EDUCATOR_PATRON_TYPES)) {
             APILogger::addDebug('Sending email using NewPatron object');
-
             $email = new MyLibraryNycEmail($streamData);
         }
 
