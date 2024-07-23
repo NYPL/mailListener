@@ -1,5 +1,5 @@
 {
-  "name": "NYPL/mailListener”",
+  "name": "nypl/mailListener”",
   "description": "NYPL Mail Listener",
   "require": {
     "nypl/microservice-starter": "^1.0.0",
