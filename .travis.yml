@@ -2,7 +2,7 @@ language:
 - php
 - node_js
 php:
-- 8.3.10
+- 8.3
 node_js:
 - '16'
 cache:
