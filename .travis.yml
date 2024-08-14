@@ -4,7 +4,7 @@ language:
 php:
 - 7.1
 node_js:
-- '14'
+- '20'
 cache:
   directories:
   - node_modules
