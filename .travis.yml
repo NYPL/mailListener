@@ -2,9 +2,9 @@ language:
 - php
 - node_js
 php:
-- 7.1
+- 7.3
 node_js:
-- '6'
+- '16'
 cache:
   directories:
   - node_modules
@@ -27,7 +27,7 @@ deploy:
   skip_cleanup: true
   script: npm run deploy-qa
   on:
-    branch: qa
+    branch: test-master-branch
 - provider: script
   skip_cleanup: true
   script: npm run deploy-production
