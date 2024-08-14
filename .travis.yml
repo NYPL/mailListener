@@ -2,7 +2,7 @@ language:
 - php
 - node_js
 php:
-- 7.3
+- 7.1
 node_js:
 - '16'
 cache:
