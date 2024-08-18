@@ -3,8 +3,7 @@
   "description": "NYPL Mail Listener",
   "require": {
     "nypl/microservice-starter": "1.2.24",
-    "twig/twig": "2.3.2",
-    "guzzlehttp/guzzle": "7.6.1"
+    "twig/twig": "2.3.2"
   },
   "require-dev": {
     "phpunit/phpunit": "7.2.7",
