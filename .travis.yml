@@ -7,9 +7,6 @@ node_js: '16.x'
 cache:
   directories:
   - node_modules
-before_install:
-  - sudo apt-get update
-  - sudo apt-get install -y libxcrypt1
 install:
 - npm install
 script:
