@@ -3,8 +3,7 @@ language:
 - node_js
 php:
 - 7.1
-node_js:
-- '20'
+node_js: '16.x'
 cache:
   directories:
   - node_modules
