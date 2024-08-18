@@ -21,6 +21,6 @@
   "dependencies": {
   },
   "devDependencies": {
-    "node-lambda": "^1.0.0"
+    "node-lambda": "^0.14.0"
   }
 }
