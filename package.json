@@ -5,7 +5,7 @@
   "main": "listener.js",
   "scripts": {
     "deploy-development": "./node_modules/.bin/node-lambda deploy -e development -f ./config/development.env -o arn:aws:iam::224280085904:role/lambda_basic_execution -S ./config/event_sources_development.json -a $AWS_ACCESS_KEY_ID_DEVELOPMENT -s $AWS_SECRET_ACCESS_KEY_DEVELOPMENT",
-    "deploy-qa": "./node_modules/.bin/node-lambda deploy -e qa -f ./config/qa.env -o arn:aws:iam::946183545209:role/lambda-full-access -S ./config/event_sources_qa.json --layers arn:aws:lambda:us-east-1:946183545209:layer:lib-for-node10-wrapped-php7:1 -a $AWS_ACCESS_KEY_ID_QA -s $AWS_SECRET_ACCESS_KEY_QA",
+    "deploy-qa": "./node_modules/.bin/node-lambda deploy -e qa -f ./config/qa.env -o arn:aws:iam::946183545209:role/lambda-full-access -S ./config/event_sources_qa.json -a $AWS_ACCESS_KEY_ID_QA -s $AWS_SECRET_ACCESS_KEY_QA",
     "deploy-production": "./node_modules/.bin/node-lambda deploy -e production -f ./config/production.env -o arn:aws:iam::946183545209:role/lambda-full-access    -S ./config/event_sources_production.json -a $AWS_ACCESS_KEY_ID_PRODUCTION -s $AWS_SECRET_ACCESS_KEY_PRODUCTION",
     "deploy-development-local": "./node_modules/.bin/node-lambda deploy -e development -f ./config/development.env -o arn:aws:iam::224280085904:role/lambda_basic_execution -S ./config/event_sources_development.json -P nypl-sandbox",
     "deploy-qa-local": "./node_modules/.bin/node-lambda deploy -e qa -f config/qa.env -o 'arn:aws:iam::946183545209:role/lambda-full-access' -S ./config/event_sources_qa.json -P nypl-digital-dev",
