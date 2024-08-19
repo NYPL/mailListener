@@ -1,9 +1,8 @@
-language:
-- php
-- node_js
+dist: xenial
+language: ruby
 php:
 - 7.1
-node_js: '16.x'
+node_js: '20.x'
 cache:
   directories:
   - node_modules
