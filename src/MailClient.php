@@ -5,8 +5,6 @@ use Aws\Ses\SesClient;
 use NYPL\Services\Model\DataModel\StreamData;
 use NYPL\Services\Model\DataModel\StreamData\Patron\Patron;
 use NYPL\Services\Model\DataModel\StreamData\NewPatron\NewPatron;
-# TODO: Remove after production deployment
-//use NYPL\Services\Model\Email\MyLibraryNycEmail;
 use NYPL\Services\Model\Email\PatronEmail;
 use NYPL\Starter\APIException;
 use NYPL\Starter\APILogger;
@@ -52,11 +50,6 @@ class MailClient
 
             $email = new PatronEmail($streamData);
         }
-        # TODO: Remove after production deployment
-        // if ($streamData instanceof NewPatron && in_array($streamData->patronType, EDUCATOR_PATRON_TYPES)) {
-        //     APILogger::addDebug('Sending email using NewPatron object');
-        //     $email = new MyLibraryNycEmail($streamData);
-        // }
 
         if (!isset($email)) {
             APILogger::addDebug('No email will be sent for ' . get_class($streamData) . ' class');
