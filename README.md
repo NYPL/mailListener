@@ -1,4 +1,14 @@
+# Deprecated
+
+As of Sep 2024, this app is no longer in use at NYPL. It is being deprecated because:
+ - Patrons created through the v0.2+ version of the [dgx-patron-creator-service](https://github.com/NYPL/dgx-patron-creator-service) are broadast to the `NewPatron` stream - not the `Patron` stream.
+ - The only users of [dgx-patron-creator-service](https://github.com/NYPL/dgx-patron-creator-service) use the v0.3 endpoints, so we only see traffic on the `NewPatron` stream.
+ - This app only sends email to patrons on the `NewPatron` stream when they have ptype 149 or 151
+ - The new-patron flow for patrons with ptype 149 & 151 (MyLibraryNYC teachers) is changing and will no longer rely on emails sent through mailListener.
+
 # NYPL Mail Listener
+
+This app sends email to new patrons found on the `Patron` and `NewPatron` kinesis streams.
 
 This package is intended to be used as a Lambda-based Node.js/PHP Listener to listen to a Kinesis Stream. 
 
